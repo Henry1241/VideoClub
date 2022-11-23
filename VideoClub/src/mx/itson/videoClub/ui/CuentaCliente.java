@@ -17,6 +17,7 @@ import javax.swing.JFileChooser;
 import javax.swing.table.DefaultTableModel;
 import mx.itson.videoClub.entidades.Compra;
 import mx.itson.videoClub.entidades.Cuenta;
+import mx.itson.videoClub.enumeradores.Entrega;
 import mx.itson.videoClub.enumeradores.Tipo;
 
 /**
@@ -62,8 +63,10 @@ public class CuentaCliente extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         lblFinal = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblResumen.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -85,36 +88,35 @@ public class CuentaCliente extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(tblResumen);
 
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 170, 630, 80));
+
         jLabel11.setText("Compras");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 196, 54, -1));
 
         jLabel4.setText("DETALLES DE LAS COMPRAS");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, -1, -1));
 
         jLabel12.setText("Total pagado");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 231, -1, -1));
 
         tblDetalle.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "FECHA", "DESCRIPCIÓN", "COMPRA", "RENTA", "SUBTOTAL"
+                "FECHA", "DESCRIPCIÓN", "COMPRA", "RENTA", "ENTREGA", "SUBTOTAL"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -123,16 +125,18 @@ public class CuentaCliente extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(tblDetalle);
 
+        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 950, 170));
+
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel7.setText("CUENTA");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(322, 108, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel3.setText("CUENTA");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(368, 11, -1, -1));
 
         tblCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
                 {null},
                 {null}
             },
@@ -149,6 +153,8 @@ public class CuentaCliente extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(tblCliente);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 65, 222, 60));
 
         tblId.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -169,10 +175,14 @@ public class CuentaCliente extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tblId);
 
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(368, 58, 343, 60));
+
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel9.setText("MONEDA");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 89, -1, -1));
 
         jLabel6.setText("Rentas");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 216, -1, -1));
 
         jButton1.setText("Calcular");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -180,93 +190,11 @@ public class CuentaCliente extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 17, -1, -1));
+        getContentPane().add(lblFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(825, 568, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(319, 319, 319)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel7))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton1))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel4)))
-                        .addGap(0, 150, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane4)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lblFinal)
-                .addGap(46, 46, 46))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(5, 5, 5)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(76, Short.MAX_VALUE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(256, 256, 256)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addComponent(jButton1))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel7))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(67, 67, 67)
-                .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addComponent(jLabel12)
-                .addGap(26, 26, 26)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblFinal)
-                .addContainerGap(31, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap(65, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(345, 345, 345)))
-        );
+        jLabel1.setText("SUBTOTAL");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 570, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -355,6 +283,7 @@ public class CuentaCliente extends javax.swing.JFrame {
                 String sub = String.valueOf(formatMoneda.format(cuenta.suma(HEIGHT) + cuenta.compras(cuenta.getCompras()) + cuenta.rentas(cuenta.getCompras())));
 
                 lblFinal.setText(sub);
+                Cuenta cu = new Cuenta();
                 
                 for (Compra c : cuenta.getCompras()) {
                     if (c.getTipo() == Tipo.COMPRA) {
@@ -362,18 +291,20 @@ public class CuentaCliente extends javax.swing.JFrame {
                         double subRentas = 0;
                         double subTotal = 0;
                         subCompras += c.getCantidad();
-                        subTotal = subCompras - subRentas;
+                        subTotal = subCompras;
 
-                        modeloDetalle.addRow(new Object[]{formato.format(c.getFecha()), c.getDescripcion(), formatMoneda.format(c.getCantidad()), "", formatMoneda.format(subTotal)});
+                        modeloDetalle.addRow(new Object[]{formato.format(c.getFecha()), c.getDescripcion(), formatMoneda.format(c.getCantidad()), "", c.getEntrega(), formatMoneda.format(subTotal)});
                     } else if (c.getTipo() == Tipo.RENTA) {
                         double subCompras = 0;
                         double subRentas = 0;
                         double subTotal = 0;
-                        subRentas += c.getCantidad();
-                        subTotal = subCompras + subRentas;
+                        if(c.getEntrega() == Entrega.RETRASO){
+                            subRentas = (c.getCantidad() * 0.10);
+                            subRentas += c.getCantidad();
+                        subTotal = subRentas;
 
-                        modeloDetalle.addRow(new Object[]{formato.format(c.getFecha()), c.getDescripcion(), "", formatMoneda.format(c.getCantidad()), formatMoneda.format(subTotal)});
-
+                        modeloDetalle.addRow(new Object[]{formato.format(c.getFecha()), c.getDescripcion(), "", formatMoneda.format(c.getCantidad()), c.getEntrega(), formatMoneda.format(subTotal)});
+                        }
                     }
 
                 }
@@ -422,6 +353,7 @@ public class CuentaCliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel3;

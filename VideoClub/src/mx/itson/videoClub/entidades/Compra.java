@@ -6,6 +6,7 @@
 package mx.itson.videoClub.entidades;
 
 import java.util.Date;
+import mx.itson.videoClub.enumeradores.Entrega;
 import mx.itson.videoClub.enumeradores.Tipo;
 
 /**
@@ -20,6 +21,7 @@ public class Compra {
     private String descripcion;
     private double cantidad;
     private Tipo tipo;
+    private Entrega entrega;
 
     /**
      * @return the fecha
@@ -75,6 +77,20 @@ public class Compra {
      */
     public void setTipo(Tipo tipo) {
         this.tipo = tipo;
+    }
+
+    /**
+     * @return the entrega
+     */
+    public Entrega getEntrega() {
+        return entrega;
+    }
+
+    /**
+     * @param entrega the entrega to set
+     */
+    public void setEntrega(Entrega entrega) {
+        this.entrega = entrega;
     }
 
 }

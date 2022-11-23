@@ -7,6 +7,7 @@ package mx.itson.videoClub.entidades;
 
 import com.google.gson.Gson;
 import java.util.List;
+import mx.itson.videoClub.enumeradores.Entrega;
 import mx.itson.videoClub.enumeradores.Tipo;
 
 /**
@@ -62,21 +63,27 @@ public class Cuenta {
 
         for (Compra c : listaRentas) {
             if (c.getTipo() == Tipo.RENTA) {
+                if (c.getEntrega() == Entrega.RETRASO) {
+                    totalRentas = c.getCantidad() + c.getCantidad() * 0.10;
+                } else if (c.getEntrega() == Entrega.DEVUELTO) {
+                    totalRentas = c.getCantidad();
+                }
                 totalRentas += c.getCantidad();
-            }
 
+            }
         }
         return totalRentas;
     }
 
-    /**
-     * El metodo se encarga de restar el total de los depositos y el total de
-     * los retiros para obtener el subTotal.
-     *
-     * @param resultado
-     * @return
-     */
-    public double suma(double resultado) {
+
+/**
+ * El metodo se encarga de restar el total de los depositos y el total de los
+ * retiros para obtener el subTotal.
+ *
+ * @param resultado
+ * @return
+ */
+public double suma(double resultado) {
         double suma = compras(compras) + rentas(compras);
         return resultado;
     }
@@ -93,24 +100,6 @@ public class Cuenta {
      */
     public void setMes(int Mes) {
         this.mes = Mes;
-    }
-
-    public double saldoInicial(int mes) {
-
-        double saldoInicial = 0;
-        for (Compra c : this.compras) {
-
-            for (int i = 0; i < mes; i++) {
-                if (c.getFecha().getMonth() == i && c.getTipo() == Tipo.COMPRA) {
-                    saldoInicial += c.getCantidad();
-                } else if (c.getFecha().getMonth() == i && c.getTipo() == Tipo.RENTA) {
-                    saldoInicial -= c.getCantidad();
-                }
-            }
-        }
-
-        return saldoInicial;
-
     }
 
     /**
